@@ -36,6 +36,14 @@ mac=cc:96:e5:d8:47:98
 
 The `_` is a placeholder for `$0` — the script reads the interface and MAC from `$1` and `$2`. Use `en0` for Wi-Fi on modern Macs; check with `networksetup -listallhardwareports` if unsure.
 
+### File exchange
+
+P2P file sharing directly between devices — no upload, no server.
+
+```sh
+open https://neardrop.me/
+```
+
 ### IPTV web player
 
 A self-contained HTML page that plays 227 Italian TV and radio channels using HLS.js. Open in any browser — no server needed.
