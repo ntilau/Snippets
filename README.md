@@ -12,7 +12,7 @@ Installs Homebrew, adds it to `PATH`, and sets up a standard set of packages.
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ntilau/Snippets/HEAD/brew.sh)"
 ```
 
-Installs: `git`, `gh`, `glab`, `sevenzip`, `tree`, Google Chrome, ONLYOFFICE, Scroll Reverser, Syncthing, Claude Code.
+Installs: `git`, `gh`, `sevenzip`, `tree`, Google Chrome, ONLYOFFICE, Scroll Reverser, Syncthing, Claude Code.
 
 ### Screen mirror
 
