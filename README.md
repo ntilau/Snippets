@@ -4,6 +4,14 @@ Copy-paste shell scripts for macOS setup and utilities. Each script is a self-co
 
 ## Scripts
 
+### MacOS Dock
+
+Reset Mac Dock to its original factory layout and default settings
+
+```sh
+defaults delete com.apple.dock; killall Dock
+```
+
 ### Homebrew defaults
 
 Installs Homebrew, adds it to `PATH`, and sets up a standard set of packages.
