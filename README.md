@@ -17,7 +17,6 @@ defaults delete com.apple.dock; killall Dock
 Set as Chrome on Linux
 
 ```sh
-# Store it as a reusable variable
 USER_AGENT='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36'
 defaults write com.apple.Safari CustomUserAgent \'$USER_AGENT\'
 ```
