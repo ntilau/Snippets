@@ -12,6 +12,12 @@ Reset Mac Dock to its original factory layout and default settings
 defaults delete com.apple.dock; killall Dock
 ```
 
+### MacOS HotPlug disable
+
+```sh
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool YES
+```
+
 ### Safari Custom User Agent
 
 Set as Chrome on Linux
