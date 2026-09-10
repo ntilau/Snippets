@@ -81,4 +81,17 @@ A self-contained HTML page that plays 227 Italian TV and radio channels using HL
 curl -O https://raw.githubusercontent.com/ntilau/Snippets/HEAD/index.html
 ```
 
-Supports touch swipe left/right for channel switching on mobile devices. Channels include national networks (La7, Nove, TV 2000, Real Time, DMAX, etc.), music/radio stations (RTL 102.5, Radio 105 TV, Deejay TV, RDS Social TV, etc.), and regional broadcasters.
+### Integrate DeepSeek with Claude Code
+
+Add this to your ~/.bash_aliases or ~/.zshrc
+
+```sh
+export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+export ANTHROPIC_AUTH_TOKEN=sk-***
+export ANTHROPIC_MODEL=deepseek-v4-flash
+export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-v4-pro[1m]
+export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-v4-pro
+export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash
+export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash
+export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash
+```
