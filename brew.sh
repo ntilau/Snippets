@@ -8,7 +8,6 @@ source ~/.zprofile
 ## default installation
 brew install git gh sevenzip tree
 brew install --cask claude-code
-brew install --cask google-chrome
 
 # cleaning up temp repositories
 brew cleanup --prune=all
