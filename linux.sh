@@ -8,5 +8,5 @@ useradd -m -g sudo -p t3st admin
 #sudo deluser --remove-home admin
 #sudo apt install smbclient cifs-utils -y
 
-sudo sed -i 's/#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=true/' /etc/default/grub
+sudo sed -i 's/\#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=true/' /etc/default/grub
 sudo update-grub
