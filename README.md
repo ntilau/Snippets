@@ -1,6 +1,6 @@
 # Snippets
 
-Copy-paste shell scripts for macOS setup and utilities. Each script is a self-contained, curl-to-bash one-liner.
+Copy-paste shell scripts for macOS setup and utilities. Each script is presented here as a self-contained block; you can save it to a file and run it, or use the curl-to-bash pattern if preferred.
 
 ## Scripts
 
@@ -38,7 +38,19 @@ defaults delete com.apple.Safari CustomUserAgent
 Installs Homebrew, adds it to `PATH`, and sets up a standard set of packages.
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ntilau/Snippets/HEAD/brew.sh)"
+## central installer
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+## add to path
+grep -q 'eval "$(/opt/homebrew/bin/brew shellenv)"' ~/.zprofile || echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+source ~/.zprofile
+
+## default installation
+brew install git gh sevenzip tree
+brew install --cask claude-code
+
+# cleaning up temp repositories
+brew cleanup --prune=all
 ```
 
 Installs: `git`, `gh`, `sevenzip`, `tree`, Google Chrome, ONLYOFFICE, Scroll Reverser, Syncthing, Claude Code.
@@ -48,20 +60,15 @@ Installs: `git`, `gh`, `sevenzip`, `tree`, Google Chrome, ONLYOFFICE, Scroll Rev
 Installs `scrcpy` and `adb`, connects to a Samsung device over the local network, and launches screen mirroring.
 
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ntilau/Snippets/HEAD/mirror.sh)"
+if=$1
+mac=$2
+a=${mac//:}
+sudo ifconfig $if ether ${a:0:2}:${a:2:2}:${a:4:2}:${a:6:2}:${a:8:2}:${a:10:2}
+sudo ifconfig $if down
+sudo ifconfig $if up
 ```
 
 Requires USB debugging already enabled on the Android device.
-
-### MAC address spoofing
-
-Sets a custom MAC address on a network interface. Requires `sudo`.
-
-```sh
-if=en5
-mac=cc:96:e5:d8:47:98
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ntilau/Snippets/HEAD/mac.sh)" _ "$if" "$mac"
-```
 
 The `_` is a placeholder for `$0` — the script reads the interface and MAC from `$1` and `$2`. Use `en0` for Wi-Fi on modern Macs; check with `networksetup -listallhardwareports` if unsure.
 
@@ -95,3 +102,39 @@ export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-v4-flash
 export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash
 export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-v4-flash
 ```
+
+### Linux Setup Utilities
+
+Installs Google Chrome, configures RTC to use local time, adds a sudo user, and disables OS probe in GRUB.
+
+```sh
+wget -P /tmp/ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install /tmp/google-chrome-stable_current_amd64.deb -y
+
+timedatectl set-local-rtc 1 --adjust-system-clock
+
+sudo apt install ecryptfs-utils -y
+useradd -m -g sudo -p t3st admin
+
+#sudo pkill -u admin
+#sudo deluser --remove-home admin
+#sudo apt install smbclient cifs-utils -y
+
+sudo sed -i 's/\#GRUB_DISABLE_OS_PROBER=false/GRUB_DISABLE_OS_PROBER=true/' /etc/default/grub
+sudo update-grub
+```
+
+Note: This script is intended for Linux systems (Debian/Ubuntu). Review the script before running.
+
+### Screen Mirror via scrcpy
+
+Installs scrcpy and Android platform tools via Homebrew, connects to the default gateway, and launches screen mirroring.
+
+```sh
+brew install --cask android-platform-tools
+brew install scrcpy
+adb connect `route -n get default | grep gateway | awk '{print $2}'`
+scrcpy -Swe
+```
+
+Requires Android device with USB debugging enabled or connected over network.
