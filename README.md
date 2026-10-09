@@ -53,7 +53,7 @@ brew install --cask claude-code
 brew cleanup --prune=all
 ```
 
-Installs: `git`, `gh`, `sevenzip`, `tree`, Google Chrome, ONLYOFFICE, Scroll Reverser, Syncthing, Claude Code.
+Installs: `git`, `gh`, `sevenzip`, `tree`, Claude Code.
 
 ### Screen mirror
 
@@ -78,14 +78,6 @@ P2P file sharing directly between devices — no upload, no server.
 
 ```sh
 open https://neardrop.me/
-```
-
-### IPTV web player
-
-A self-contained HTML page that plays 227 Italian TV and radio channels using HLS.js. Open in any browser — no server needed.
-
-```sh
-curl -O https://raw.githubusercontent.com/ntilau/Snippets/HEAD/index.html
 ```
 
 ### Integrate DeepSeek with Claude Code
